@@ -2,6 +2,11 @@
     "name": "flowcode/amulen-media-bundle",
     "description": "Description of project AmulenMediaBundle.",
     "license": "MIT",
+    "autoload": {
+        "psr-0": {
+            "": "src/"
+        }
+    },
     "authors": [
         {
             "name": "Juan Manuel Aguero",
