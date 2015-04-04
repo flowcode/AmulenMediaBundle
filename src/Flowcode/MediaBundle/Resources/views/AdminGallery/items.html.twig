@@ -1,4 +1,4 @@
-{% extends '::backend.html.twig' %}
+{% extends 'FlowcodeDashboardBundle:Default:layout.html.twig' %}
 
 {% block body -%}
 <div class="page-header">
@@ -8,7 +8,7 @@
     <ul class="list-inline">
         <li>
             <a href="{{ path('admin_gallery_item_new', { 'id' : gallery.id }) }}" class="btn btn-primary">
-                <i class="glyphicon glyphicon-plus"></i> {{ "add item"|trans }}
+                <i class="fa fa-plus"></i> {{ "add item"|trans }}
             </a>
         </li>
     </ul>

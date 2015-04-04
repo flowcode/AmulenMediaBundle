@@ -1,4 +1,4 @@
-{% extends 'backend.html.twig' %}
+{% extends 'FlowcodeDashboardBundle:Default:layout.html.twig' %}
 
 {% block body %}
 <div class="page-header">
@@ -9,19 +9,19 @@
         <div class="row">
             <div class="col-sm-4 tile">
                 <a class="btn btn-primary btn-block" href="{{ url('admin_gallery') }}">
-                    <div><i class="glyphicon glyphicon-list-alt"></i></div>
+                    <div><i class="fa fa-list-alt"></i></div>
                     {{ 'gallerys'|trans }}
                 </a>
             </div>
             <div class="col-sm-4 tile">
                 <a class="btn btn-primary btn-block" href="{{ url('admin_media_browser') }}">
-                    <div><i class="glyphicon glyphicon-picture"></i></div>
+                    <div><i class="fa fa-picture"></i></div>
                     {{ 'media files'|trans }}
                 </a>
             </div>
             <div class="col-sm-4 tile">
                 <a class="btn btn-primary btn-block" href="{{ url('admin_page') }}">
-                    <div><i class="glyphicon glyphicon-tags"></i></div>
+                    <div><i class="fa fa-tags"></i></div>
                     {{ 'categorys'|trans }}
                 </a>
             </div>
