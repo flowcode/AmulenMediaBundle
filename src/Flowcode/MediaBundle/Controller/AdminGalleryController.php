@@ -27,13 +27,21 @@ class AdminGalleryController extends Controller {
      * @Method("GET")
      * @Template()
      */
-    public function indexAction() {
+    public function indexAction(Request $request) {
+        $page = $request->get("page", 1);
+        $searchStr = $request->get("search");
+        $type = $request->get("type");
         $em = $this->getDoctrine()->getManager();
+        $query = $em->getRepository("FlowcodeMediaBundle:Gallery")->getQuerySearch($searchStr, $type);
 
-        $entities = $em->getRepository('FlowcodeMediaBundle:Gallery')->findAll();
+        $paginator = $this->get('knp_paginator');
+        $pagination = $paginator->paginate(
+                $query, $this->get('request')->query->get('page', $page));
 
         return array(
-            'entities' => $entities,
+            'pagination' => $pagination,
+            'searchStr' => $searchStr,
+            'type' => $type,
         );
     }
 

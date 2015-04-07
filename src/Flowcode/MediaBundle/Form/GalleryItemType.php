@@ -15,9 +15,9 @@ class GalleryItemType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('position')
+            ->add('position', 'hidden')
             ->add('media', new MediaType())
-            ->add('gallery')
+//            ->add('gallery')
         ;
     }
     

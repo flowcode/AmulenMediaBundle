@@ -18,6 +18,9 @@ use Gedmo\Mapping\Annotation as Gedmo;
  */
 class Gallery {
 
+    const TYPE_PRODUCT = "gallery_product";
+    const TYPE_SLIDER = "gallery_slider";
+
     /**
      * @var integer
      *
@@ -43,6 +46,13 @@ class Gallery {
     private $slug;
 
     /**
+     * @var string
+     *
+     * @ORM\Column(name="type", type="string", length=255)
+     */
+    private $type;
+
+    /**
      * @var boolean
      *
      * @ORM\Column(name="enabled", type="boolean")
@@ -50,7 +60,7 @@ class Gallery {
     private $enabled;
 
     /**
-     * @OneToMany(targetEntity="GalleryItem", mappedBy="gallery")
+     * @OneToMany(targetEntity="GalleryItem", mappedBy="gallery", cascade={"persist"})
      * */
     private $galleryItems;
 
@@ -66,6 +76,7 @@ class Gallery {
     function __construct() {
         $this->galleryItems = new ArrayCollection();
         $this->tags = new ArrayCollection();
+        $this->type = self::TYPE_SLIDER;
     }
 
     /**
@@ -147,6 +158,7 @@ class Gallery {
      * @return Gallery
      */
     public function addGalleryItem(\Flowcode\MediaBundle\Entity\GalleryItem $galleryItems) {
+        $galleryItems->setGallery($this);
         $this->galleryItems[] = $galleryItems;
 
         return $this;
@@ -198,6 +210,27 @@ class Gallery {
      */
     public function getTags() {
         return $this->tags;
+    }
+
+    /**
+     * Set type
+     *
+     * @param string $type
+     * @return Gallery
+     */
+    public function setType($type) {
+        $this->type = $type;
+
+        return $this;
+    }
+
+    /**
+     * Get type
+     *
+     * @return string 
+     */
+    public function getType() {
+        return $this->type;
     }
 
     public function __toString() {

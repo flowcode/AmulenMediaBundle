@@ -1,0 +1,9 @@
+## YAML Template.
+---
+gallery:
+    list:
+        title: "galerías"
+    create:
+        title: "crear galería"
+    edit:
+        title: "editar galería"
