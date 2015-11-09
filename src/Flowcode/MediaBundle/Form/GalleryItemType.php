@@ -17,10 +17,10 @@ class GalleryItemType extends AbstractType
         $builder
             ->add('position', 'hidden')
             ->add('media', new MediaType())
-//            ->add('gallery')
+            ->add('gallery')
         ;
     }
-    
+
     /**
      * @param OptionsResolverInterface $resolver
      */
