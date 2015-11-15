@@ -17,11 +17,6 @@ class GalleryType extends AbstractType {
                 ->add('name')
                 ->add('enabled')
                 ->add('tags')
-                ->add('galleryItems', 'collection', array(
-                    'type' => new GalleryItemType(),
-                    'allow_add' => true,
-                    'by_reference' => false,
-                ))
         ;
     }
 

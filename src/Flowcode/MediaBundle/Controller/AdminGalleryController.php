@@ -218,7 +218,7 @@ class AdminGalleryController extends Controller {
         if ($editForm->isValid()) {
             $em->flush();
 
-            return $this->redirect($this->generateUrl('admin_gallery_edit', array('id' => $id)));
+            return $this->redirect($this->generateUrl('admin_gallery_show', array('id' => $id)));
         }
 
         return array(
@@ -338,7 +338,7 @@ class AdminGalleryController extends Controller {
             $em->persist($entity);
             $em->flush();
 
-            return $this->redirect($this->generateUrl('admin_gallery_items', array('id' => $entity->getGallery()->getId())));
+            return $this->redirect($this->generateUrl('admin_gallery_show', array('id' => $entity->getGallery()->getId())));
         }
 
         return array(
@@ -403,7 +403,7 @@ class AdminGalleryController extends Controller {
         if ($editForm->isValid()) {
             $em->flush();
 
-            return $this->redirect($this->generateUrl('admin_gallery_items', array('id' => $entity->getGallery()->getId())));
+            return $this->redirect($this->generateUrl('admin_gallery_show', array('id' => $entity->getGallery()->getId())));
         }
 
         return array(

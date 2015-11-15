@@ -1,37 +1,40 @@
 {% extends 'FlowcodeDashboardBundle:Default:layout.html.twig' %}
 
 {% block stylesheets %}
-    {{ parent() }}
-    <link href="{{ asset('bundles/fmelfinder/css/jquery-ui-1.8.21.custom.css')}}" rel="stylesheet" media="screen" />
-    <link href="{{ asset('bundles/fmelfinder/css/elfinder.min.css')}}" rel="stylesheet" media="screen" />
-    <link href="{{ asset('bundles/fmelfinder/css/theme.css')}}" rel="stylesheet" media="screen" />
+{{ parent() }}
+<link href="{{ asset('bundles/fmelfinder/css/jquery-ui-1.8.21.custom.css')}}" rel="stylesheet" media="screen" />
+<link href="{{ asset('bundles/fmelfinder/css/elfinder.min.css')}}" rel="stylesheet" media="screen" />
+<link href="{{ asset('bundles/fmelfinder/css/theme.css')}}" rel="stylesheet" media="screen" />
 {% endblock %}
 
-{% block body -%}
-<div class="page-header">
-    <h1>Media Browser</h1>
-    <ul class="list-inline">
-        <li>
-            <a href="{{ path('admin_media_dashboard') }}" class="btn btn-sm btn-default">
-                Volver
-            </a>
-        </li>
-    </ul>
-</div>
-
-<div id="elfinder"></div>
-
+{% block body %}
+{{ include('FlowcodeMediaBundle:AdminMedia:mediaHeader.html.twig') }}
+<section class="content">
+    <div class="box box-solid">
+        <div class="box-header">
+            <h3>{{ "media browser"|trans|title }}</h3>
+            <div class="box-tools">
+                <a href="{{ path('admin_media_dashboard') }}" class="btn btn-sm btn-link">
+                    {{ 'media dashboard'|trans|title }}
+                </a>
+            </div>
+        </div>
+        <div class="box-body">
+            <div id="elfinder"></div>
+        </div>
+    </div>
+</section>
 {% endblock %}
 
 {% block javascripts %}
-    {{ parent() }}
+{{ parent() }}
 <script type="text/javascript" src="{{ asset('bundles/fmelfinder/js/jquery/jquery-ui-1.8.23.custom.min.js')}}"></script>
 <script type="text/javascript" src="{{ asset('bundles/fmelfinder/js/elfinder.min.js')}}"></script>
 <script type="text/javascript" charset="utf-8">
-    $().ready(function() {
-        var $f = $('#elfinder').elfinder({
-            url: '{{path('ef_connect')}}',
-        });
+$().ready(function() {
+    var $f = $('#elfinder').elfinder({
+        url: '{{path('ef_connect')}}',
     });
+});
 </script>
 {% endblock %}
