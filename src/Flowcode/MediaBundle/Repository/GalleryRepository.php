@@ -1,6 +1,6 @@
 <?php
 
-namespace Flowcode\MediaBundle\Entity;
+namespace Flowcode\MediaBundle\Repository;
 
 use Doctrine\ORM\EntityRepository;
 

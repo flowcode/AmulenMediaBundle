@@ -7,7 +7,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
-use Flowcode\MediaBundle\Entity\MediaType;
+use Amulen\MediaBundle\Entity\MediaType;
 use Flowcode\MediaBundle\Form\MediaTypeType;
 
 /**
@@ -29,7 +29,7 @@ class AdminMediaTypeController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        $entities = $em->getRepository('FlowcodeMediaBundle:MediaType')->findAll();
+        $entities = $em->getRepository('AmulenMediaBundle:MediaType')->findAll();
 
         return array(
             'entities' => $entities,
@@ -40,7 +40,7 @@ class AdminMediaTypeController extends Controller
      *
      * @Route("/", name="mediatype_create")
      * @Method("POST")
-     * @Template("FlowcodeMediaBundle:MediaType:new.html.twig")
+     * @Template("AmulenMediaBundle:MediaType:new.html.twig")
      */
     public function createAction(Request $request)
     {
@@ -110,7 +110,7 @@ class AdminMediaTypeController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        $entity = $em->getRepository('FlowcodeMediaBundle:MediaType')->find($id);
+        $entity = $em->getRepository('AmulenMediaBundle:MediaType')->find($id);
 
         if (!$entity) {
             throw $this->createNotFoundException('Unable to find MediaType entity.');
@@ -135,7 +135,7 @@ class AdminMediaTypeController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        $entity = $em->getRepository('FlowcodeMediaBundle:MediaType')->find($id);
+        $entity = $em->getRepository('AmulenMediaBundle:MediaType')->find($id);
 
         if (!$entity) {
             throw $this->createNotFoundException('Unable to find MediaType entity.');
@@ -174,13 +174,13 @@ class AdminMediaTypeController extends Controller
      *
      * @Route("/{id}", name="mediatype_update")
      * @Method("PUT")
-     * @Template("FlowcodeMediaBundle:MediaType:edit.html.twig")
+     * @Template("AmulenMediaBundle:MediaType:edit.html.twig")
      */
     public function updateAction(Request $request, $id)
     {
         $em = $this->getDoctrine()->getManager();
 
-        $entity = $em->getRepository('FlowcodeMediaBundle:MediaType')->find($id);
+        $entity = $em->getRepository('AmulenMediaBundle:MediaType')->find($id);
 
         if (!$entity) {
             throw $this->createNotFoundException('Unable to find MediaType entity.');
@@ -215,7 +215,7 @@ class AdminMediaTypeController extends Controller
 
         if ($form->isValid()) {
             $em = $this->getDoctrine()->getManager();
-            $entity = $em->getRepository('FlowcodeMediaBundle:MediaType')->find($id);
+            $entity = $em->getRepository('AmulenMediaBundle:MediaType')->find($id);
 
             if (!$entity) {
                 throw $this->createNotFoundException('Unable to find MediaType entity.');

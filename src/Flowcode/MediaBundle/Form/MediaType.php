@@ -26,7 +26,7 @@ class MediaType extends AbstractType
     public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'Flowcode\MediaBundle\Entity\Media'
+            'data_class' => 'Amulen\MediaBundle\Entity\Media'
         ));
     }
 

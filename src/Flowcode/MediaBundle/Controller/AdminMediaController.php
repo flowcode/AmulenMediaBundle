@@ -7,7 +7,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
-use Flowcode\MediaBundle\Entity\Media;
+use Amulen\MediaBundle\Entity\Media;
 use Flowcode\MediaBundle\Form\MediaType;
 
 /**
@@ -42,7 +42,7 @@ class AdminMediaController extends Controller {
 
         return array();
     }
-    
+
     /**
      * Lists all Media entities.
      *
@@ -53,7 +53,7 @@ class AdminMediaController extends Controller {
     public function indexAction() {
         $em = $this->getDoctrine()->getManager();
 
-        $entities = $em->getRepository('FlowcodeMediaBundle:Media')->findAll();
+        $entities = $em->getRepository('AmulenMediaBundle:Media')->findAll();
 
         return array(
             'entities' => $entities,
@@ -65,7 +65,7 @@ class AdminMediaController extends Controller {
      *
      * @Route("/", name="admin_media_create")
      * @Method("POST")
-     * @Template("FlowcodeMediaBundle:Media:new.html.twig")
+     * @Template("AmulenMediaBundle:Media:new.html.twig")
      */
     public function createAction(Request $request) {
         $entity = new Media();
@@ -138,7 +138,7 @@ class AdminMediaController extends Controller {
     public function showAction($id) {
         $em = $this->getDoctrine()->getManager();
 
-        $entity = $em->getRepository('FlowcodeMediaBundle:Media')->find($id);
+        $entity = $em->getRepository('AmulenMediaBundle:Media')->find($id);
 
         if (!$entity) {
             throw $this->createNotFoundException('Unable to find Media entity.');
@@ -162,7 +162,7 @@ class AdminMediaController extends Controller {
     public function editAction($id) {
         $em = $this->getDoctrine()->getManager();
 
-        $entity = $em->getRepository('FlowcodeMediaBundle:Media')->find($id);
+        $entity = $em->getRepository('AmulenMediaBundle:Media')->find($id);
 
         if (!$entity) {
             throw $this->createNotFoundException('Unable to find Media entity.');
@@ -201,12 +201,12 @@ class AdminMediaController extends Controller {
      *
      * @Route("/{id}", name="admin_media_update")
      * @Method("PUT")
-     * @Template("FlowcodeMediaBundle:Media:edit.html.twig")
+     * @Template("AmulenMediaBundle:Media:edit.html.twig")
      */
     public function updateAction(Request $request, $id) {
         $em = $this->getDoctrine()->getManager();
 
-        $entity = $em->getRepository('FlowcodeMediaBundle:Media')->find($id);
+        $entity = $em->getRepository('AmulenMediaBundle:Media')->find($id);
 
         if (!$entity) {
             throw $this->createNotFoundException('Unable to find Media entity.');
@@ -241,7 +241,7 @@ class AdminMediaController extends Controller {
 
         if ($form->isValid()) {
             $em = $this->getDoctrine()->getManager();
-            $entity = $em->getRepository('FlowcodeMediaBundle:Media')->find($id);
+            $entity = $em->getRepository('AmulenMediaBundle:Media')->find($id);
 
             if (!$entity) {
                 throw $this->createNotFoundException('Unable to find Media entity.');

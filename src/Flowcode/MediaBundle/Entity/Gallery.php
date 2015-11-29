@@ -12,9 +12,6 @@ use Gedmo\Mapping\Annotation as Gedmo;
 
 /**
  * Gallery
- *
- * @ORM\Table(name="media_gallery")
- * @ORM\Entity(repositoryClass="GalleryRepository")
  */
 class Gallery {
 
@@ -28,50 +25,50 @@ class Gallery {
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
      */
-    private $id;
+    protected $id;
 
     /**
      * @var string
      *
      * @ORM\Column(name="name", type="string", length=255)
      */
-    private $name;
+    protected $name;
 
     /**
      * @var string
-     * 
+     *
      * @Gedmo\Slug(fields={"name"})
      * @ORM\Column(name="slug", type="string", length=255, unique=true)
      */
-    private $slug;
+    protected $slug;
 
     /**
      * @var string
      *
      * @ORM\Column(name="type", type="string", length=255)
      */
-    private $type;
+    protected $type;
 
     /**
      * @var boolean
      *
      * @ORM\Column(name="enabled", type="boolean")
      */
-    private $enabled;
+    protected $enabled;
 
     /**
-     * @OneToMany(targetEntity="GalleryItem", mappedBy="gallery", cascade={"persist"})
+     * @OneToMany(targetEntity="\Amulen\MediaBundle\Entity\GalleryItem", mappedBy="gallery", cascade={"persist"})
      * */
-    private $galleryItems;
+    protected $galleryItems;
 
     /**
-     * @ManyToMany(targetEntity="Flowcode\ClassificationBundle\Entity\Tag")
+     * @ManyToMany(targetEntity="Amulen\ClassificationBundle\Entity\Tag")
      * @JoinTable(name="media_gallery_tag",
      *      joinColumns={@JoinColumn(name="gallery_id", referencedColumnName="id")},
      *      inverseJoinColumns={@JoinColumn(name="tag_id", referencedColumnName="id")}
      *      )
      * */
-    private $tags;
+    protected $tags;
 
     function __construct() {
         $this->galleryItems = new ArrayCollection();
@@ -82,7 +79,7 @@ class Gallery {
     /**
      * Get id
      *
-     * @return integer 
+     * @return integer
      */
     public function getId() {
         return $this->id;
@@ -92,7 +89,7 @@ class Gallery {
      * Set name
      *
      * @param string $name
-     * @return Gallery
+     * @return \Amulen\MediaBundle\Entity\Gallery
      */
     public function setName($name) {
         $this->name = $name;
@@ -103,7 +100,7 @@ class Gallery {
     /**
      * Get name
      *
-     * @return string 
+     * @return string
      */
     public function getName() {
         return $this->name;
@@ -113,7 +110,7 @@ class Gallery {
      * Set slug
      *
      * @param string $slug
-     * @return Gallery
+     * @return \Amulen\MediaBundle\Entity\Gallery
      */
     public function setSlug($slug) {
         $this->slug = $slug;
@@ -124,7 +121,7 @@ class Gallery {
     /**
      * Get slug
      *
-     * @return string 
+     * @return string
      */
     public function getSlug() {
         return $this->slug;
@@ -134,7 +131,7 @@ class Gallery {
      * Set enabled
      *
      * @param boolean $enabled
-     * @return Gallery
+     * @return \Amulen\MediaBundle\Entity\Gallery
      */
     public function setEnabled($enabled) {
         $this->enabled = $enabled;
@@ -145,7 +142,7 @@ class Gallery {
     /**
      * Get enabled
      *
-     * @return boolean 
+     * @return boolean
      */
     public function getEnabled() {
         return $this->enabled;
@@ -154,10 +151,10 @@ class Gallery {
     /**
      * Add galleryItems
      *
-     * @param \Flowcode\MediaBundle\Entity\GalleryItem $galleryItems
-     * @return Gallery
+     * @param \Amulen\MediaBundle\Entity\GalleryItem $galleryItems
+     * @return \Amulen\MediaBundle\Entity\Gallery
      */
-    public function addGalleryItem(\Flowcode\MediaBundle\Entity\GalleryItem $galleryItems) {
+    public function addGalleryItem(\Amulen\MediaBundle\Entity\GalleryItem $galleryItems) {
         $galleryItems->setGallery($this);
         $this->galleryItems[] = $galleryItems;
 
@@ -167,16 +164,16 @@ class Gallery {
     /**
      * Remove galleryItems
      *
-     * @param \Flowcode\MediaBundle\Entity\GalleryItem $galleryItems
+     * @param \Amulen\MediaBundle\Entity\GalleryItem $galleryItems
      */
-    public function removeGalleryItem(\Flowcode\MediaBundle\Entity\GalleryItem $galleryItems) {
+    public function removeGalleryItem(\Amulen\MediaBundle\Entity\GalleryItem $galleryItems) {
         $this->galleryItems->removeElement($galleryItems);
     }
 
     /**
      * Get galleryItems
      *
-     * @return \Doctrine\Common\Collections\Collection 
+     * @return \Doctrine\Common\Collections\Collection
      */
     public function getGalleryItems() {
         return $this->galleryItems;
@@ -185,10 +182,10 @@ class Gallery {
     /**
      * Add tags
      *
-     * @param \Flowcode\ClassificationBundle\Entity\Tag $tags
+     * @param \Amulen\ClassificationBundle\Entity\Tag $tags
      * @return Gallery
      */
-    public function addTag(\Flowcode\ClassificationBundle\Entity\Tag $tags) {
+    public function addTag(\Amulen\ClassificationBundle\Entity\Tag $tags) {
         $this->tags[] = $tags;
 
         return $this;
@@ -199,14 +196,14 @@ class Gallery {
      *
      * @param \Flowcode\ClassificationBundle\Entity\Tag $tags
      */
-    public function removeTag(\Flowcode\ClassificationBundle\Entity\Tag $tags) {
+    public function removeTag(\Amulen\ClassificationBundle\Entity\Tag $tags) {
         $this->tags->removeElement($tags);
     }
 
     /**
      * Get tags
      *
-     * @return \Doctrine\Common\Collections\Collection 
+     * @return \Doctrine\Common\Collections\Collection
      */
     public function getTags() {
         return $this->tags;
@@ -216,7 +213,7 @@ class Gallery {
      * Set type
      *
      * @param string $type
-     * @return Gallery
+     * @return \Amulen\MediaBundle\Entity\Gallery
      */
     public function setType($type) {
         $this->type = $type;
@@ -227,7 +224,7 @@ class Gallery {
     /**
      * Get type
      *
-     * @return string 
+     * @return string
      */
     public function getType() {
         return $this->type;

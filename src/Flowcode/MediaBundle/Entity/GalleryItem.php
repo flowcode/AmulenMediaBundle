@@ -6,15 +6,10 @@ use Doctrine\ORM\Mapping as ORM;
 use Doctrine\ORM\Mapping\JoinColumn;
 use Doctrine\ORM\Mapping\ManyToOne;
 use Doctrine\ORM\Mapping\OneToOne;
-use Flowcode\MediaBundle\Entity\Gallery;
-use Flowcode\MediaBundle\Entity\GalleryItem;
-use Flowcode\MediaBundle\Entity\Media;
+use Amulen\MediaBundle\Entity\Media;
 
 /**
  * GalleryItem
- *
- * @ORM\Table(name="media_gallery_item")
- * @ORM\Entity
  */
 class GalleryItem {
 
@@ -25,31 +20,31 @@ class GalleryItem {
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
      */
-    private $id;
+    protected $id;
 
     /**
      * @var integer
      *
      * @ORM\Column(name="position", type="smallint")
      */
-    private $position;
+    protected $position;
 
     /**
      * @OneToOne(targetEntity="Media", cascade={"persist"})
      * @JoinColumn(name="media_id", referencedColumnName="id")
      * */
-    private $media;
+    protected $media;
 
     /**
-     * @ManyToOne(targetEntity="Gallery", inversedBy="galleryItems")
+     * @ManyToOne(targetEntity="\Amulen\MediaBundle\Entity\Gallery", inversedBy="galleryItems")
      * @JoinColumn(name="gallery_id", referencedColumnName="id")
      * */
-    private $gallery;
+    protected $gallery;
 
     /**
      * Get id
      *
-     * @return integer 
+     * @return integer
      */
     public function getId() {
         return $this->id;
@@ -59,7 +54,7 @@ class GalleryItem {
      * Set position
      *
      * @param integer $position
-     * @return GalleryItem
+     * @return \Amulen\MediaBundle\Entity\GalleryItem
      */
     public function setPosition($position) {
         $this->position = $position;
@@ -70,7 +65,7 @@ class GalleryItem {
     /**
      * Get position
      *
-     * @return integer 
+     * @return integer
      */
     public function getPosition() {
         return $this->position;
@@ -80,10 +75,10 @@ class GalleryItem {
     /**
      * Set media
      *
-     * @param \Flowcode\MediaBundle\Entity\Media $media
-     * @return GalleryItem
+     * @param \Amulen\MediaBundle\Entity\Media $media
+     * @return \Amulen\MediaBundle\Entity\GalleryItem
      */
-    public function setMedia(\Flowcode\MediaBundle\Entity\Media $media = null)
+    public function setMedia(\Amulen\MediaBundle\Entity\Media $media = null)
     {
         $this->media = $media;
 
@@ -93,7 +88,7 @@ class GalleryItem {
     /**
      * Get media
      *
-     * @return \Flowcode\MediaBundle\Entity\Media 
+     * @return \Amulen\MediaBundle\Entity\Media
      */
     public function getMedia()
     {
@@ -103,10 +98,10 @@ class GalleryItem {
     /**
      * Set gallery
      *
-     * @param \Flowcode\MediaBundle\Entity\Gallery $gallery
-     * @return GalleryItem
+     * @param \Amulen\MediaBundle\Entity\Gallery $gallery
+     * @return \Amulen\MediaBundle\Entity\Gallery
      */
-    public function setGallery(\Flowcode\MediaBundle\Entity\Gallery $gallery = null)
+    public function setGallery(\Amulen\MediaBundle\Entity\Gallery $gallery = null)
     {
         $this->gallery = $gallery;
 
@@ -116,7 +111,7 @@ class GalleryItem {
     /**
      * Get gallery
      *
-     * @return \Flowcode\MediaBundle\Entity\Gallery 
+     * @return \Amulen\MediaBundle\Entity\Gallery
      */
     public function getGallery()
     {

@@ -27,7 +27,7 @@ class GalleryItemType extends AbstractType
     public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'Flowcode\MediaBundle\Entity\GalleryItem'
+            'data_class' => 'Amulen\MediaBundle\Entity\GalleryItem'
         ));
     }
 

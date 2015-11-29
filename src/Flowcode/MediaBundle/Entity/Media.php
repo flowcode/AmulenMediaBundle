@@ -8,10 +8,6 @@ use Doctrine\ORM\Mapping\ManyToOne;
 
 /**
  * Media
- *
- * @ORM\Table(name="media_media")
- * @ORM\Entity(repositoryClass="MediaRepository")
- * @ORM\HasLifecycleCallbacks
  */
 class Media {
 
@@ -22,32 +18,32 @@ class Media {
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
      */
-    private $id;
+    protected $id;
 
     /**
      * @var string
      *
      * @ORM\Column(name="name", type="string", length=255)
      */
-    private $name;
+    protected $name;
 
     /**
      * @var string
      *
      * @ORM\Column(name="path", type="string", length=255)
      */
-    private $path;
+    protected $path;
 
     /**
-     * @ManyToOne(targetEntity="MediaType", inversedBy="medias")
+     * @ManyToOne(targetEntity="\Amulen\MediaBundle\Entity\MediaType", inversedBy="medias")
      * @JoinColumn(name="media_type_id", referencedColumnName="id")
      * */
-    private $mediaType;
+    protected $mediaType;
 
     /**
      * Get id
      *
-     * @return integer 
+     * @return integer
      */
     public function getId() {
         return $this->id;
@@ -57,7 +53,7 @@ class Media {
      * Set name
      *
      * @param string $name
-     * @return Media
+     * @return \Amulen\MediaBundle\Entity\Media
      */
     public function setName($name) {
         $this->name = $name;
@@ -68,7 +64,7 @@ class Media {
     /**
      * Get name
      *
-     * @return string 
+     * @return string
      */
     public function getName() {
         return $this->name;
@@ -78,7 +74,7 @@ class Media {
      * Set path
      *
      * @param string $path
-     * @return Media
+     * @return \Amulen\MediaBundle\Entity\Media
      */
     public function setPath($path) {
         $this->path = $path;
@@ -89,7 +85,7 @@ class Media {
     /**
      * Get path
      *
-     * @return string 
+     * @return string
      */
     public function getPath() {
         return $this->path;
@@ -99,7 +95,7 @@ class Media {
      * Set enabled
      *
      * @param boolean $enabled
-     * @return Media
+     * @return \Amulen\MediaBundle\Entity\Media
      */
     public function setEnabled($enabled) {
         $this->enabled = $enabled;
@@ -110,7 +106,7 @@ class Media {
     /**
      * Get enabled
      *
-     * @return boolean 
+     * @return boolean
      */
     public function getEnabled() {
         return $this->enabled;
@@ -119,10 +115,10 @@ class Media {
     /**
      * Set mediaType
      *
-     * @param MediaType $mediaType
-     * @return Media
+     * @param \Amulen\MediaBundle\Entity\MediaType $mediaType
+     * @return \Amulen\MediaBundle\Entity\Media
      */
-    public function setMediaType(MediaType $mediaType = null) {
+    public function setMediaType(\Amulen\MediaBundle\Entity\MediaType $mediaType = null) {
         $this->mediaType = $mediaType;
 
         return $this;
@@ -131,7 +127,7 @@ class Media {
     /**
      * Get mediaType
      *
-     * @return MediaType 
+     * @return \Amulen\MediaBundle\Entity\MediaType
      */
     public function getMediaType() {
         return $this->mediaType;

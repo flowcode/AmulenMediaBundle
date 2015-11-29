@@ -7,7 +7,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
-use Flowcode\MediaBundle\Entity\GalleryItem;
+use Amulen\MediaBundle\Entity\GalleryItem;
 use Flowcode\MediaBundle\Form\GalleryItemType;
 
 /**
@@ -29,7 +29,7 @@ class AdminGalleryItemController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        $entities = $em->getRepository('FlowcodeMediaBundle:GalleryItem')->findAll();
+        $entities = $em->getRepository('AmulenMediaBundle:GalleryItem')->findAll();
 
         return array(
             'entities' => $entities,
@@ -40,7 +40,7 @@ class AdminGalleryItemController extends Controller
      *
      * @Route("/", name="admin_galleryitem_create")
      * @Method("POST")
-     * @Template("FlowcodeMediaBundle:GalleryItem:new.html.twig")
+     * @Template("AmulenMediaBundle:GalleryItem:new.html.twig")
      */
     public function createAction(Request $request)
     {
@@ -110,7 +110,7 @@ class AdminGalleryItemController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        $entity = $em->getRepository('FlowcodeMediaBundle:GalleryItem')->find($id);
+        $entity = $em->getRepository('AmulenMediaBundle:GalleryItem')->find($id);
 
         if (!$entity) {
             throw $this->createNotFoundException('Unable to find GalleryItem entity.');
@@ -135,7 +135,7 @@ class AdminGalleryItemController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        $entity = $em->getRepository('FlowcodeMediaBundle:GalleryItem')->find($id);
+        $entity = $em->getRepository('AmulenMediaBundle:GalleryItem')->find($id);
 
         if (!$entity) {
             throw $this->createNotFoundException('Unable to find GalleryItem entity.');
@@ -174,13 +174,13 @@ class AdminGalleryItemController extends Controller
      *
      * @Route("/{id}", name="admin_galleryitem_update")
      * @Method("PUT")
-     * @Template("FlowcodeMediaBundle:GalleryItem:edit.html.twig")
+     * @Template("AmulenMediaBundle:GalleryItem:edit.html.twig")
      */
     public function updateAction(Request $request, $id)
     {
         $em = $this->getDoctrine()->getManager();
 
-        $entity = $em->getRepository('FlowcodeMediaBundle:GalleryItem')->find($id);
+        $entity = $em->getRepository('AmulenMediaBundle:GalleryItem')->find($id);
 
         if (!$entity) {
             throw $this->createNotFoundException('Unable to find GalleryItem entity.');
@@ -215,7 +215,7 @@ class AdminGalleryItemController extends Controller
 
         if ($form->isValid()) {
             $em = $this->getDoctrine()->getManager();
-            $entity = $em->getRepository('FlowcodeMediaBundle:GalleryItem')->find($id);
+            $entity = $em->getRepository('AmulenMediaBundle:GalleryItem')->find($id);
 
             if (!$entity) {
                 throw $this->createNotFoundException('Unable to find GalleryItem entity.');

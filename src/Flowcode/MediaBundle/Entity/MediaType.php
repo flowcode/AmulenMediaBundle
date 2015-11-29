@@ -8,12 +8,9 @@ use Doctrine\ORM\Mapping\OneToMany;
 
 /**
  * MediaType
- *
- * @ORM\Table(name="media_media_type")
- * @ORM\Entity
  */
-class MediaType {
-
+class MediaType
+{
     /**
      * @var integer
      *
@@ -21,37 +18,39 @@ class MediaType {
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
      */
-    private $id;
+    protected $id;
 
     /**
      * @var string
      *
      * @ORM\Column(name="name", type="string", length=255)
      */
-    private $name;
+    protected $name;
 
     /**
      * @var boolean
      *
      * @ORM\Column(name="enabled", type="boolean")
      */
-    private $enabled;
+    protected $enabled;
 
     /**
-     * @OneToMany(targetEntity="Media", mappedBy="mediaType")
+     * @OneToMany(targetEntity="\Amulen\MediaBundle\Entity\Media", mappedBy="mediaType")
      * */
-    private $medias;
+    protected $medias;
 
-    function __construct() {
+    public function __construct()
+    {
         $this->medias = new ArrayCollection();
     }
 
     /**
      * Get id
      *
-     * @return integer 
+     * @return integer
      */
-    public function getId() {
+    public function getId()
+    {
         return $this->id;
     }
 
@@ -61,7 +60,8 @@ class MediaType {
      * @param string $name
      * @return MediaType
      */
-    public function setName($name) {
+    public function setName($name)
+    {
         $this->name = $name;
 
         return $this;
@@ -70,9 +70,10 @@ class MediaType {
     /**
      * Get name
      *
-     * @return string 
+     * @return string
      */
-    public function getName() {
+    public function getName()
+    {
         return $this->name;
     }
 
@@ -82,7 +83,8 @@ class MediaType {
      * @param boolean $enabled
      * @return MediaType
      */
-    public function setEnabled($enabled) {
+    public function setEnabled($enabled)
+    {
         $this->enabled = $enabled;
 
         return $this;
@@ -91,19 +93,21 @@ class MediaType {
     /**
      * Get enabled
      *
-     * @return boolean 
+     * @return boolean
      */
-    public function getEnabled() {
+    public function getEnabled()
+    {
         return $this->enabled;
     }
 
     /**
      * Add medias
      *
-     * @param \Flowcode\MediaBundle\Entity\Media $medias
+     * @param \Amulen\MediaBundle\Entity\Media $medias
      * @return MediaType
      */
-    public function addMedia(\Flowcode\MediaBundle\Entity\Media $medias) {
+    public function addMedia(\Amulen\MediaBundle\Entity\Media $medias)
+    {
         $this->medias[] = $medias;
 
         return $this;
@@ -112,23 +116,25 @@ class MediaType {
     /**
      * Remove medias
      *
-     * @param \Flowcode\MediaBundle\Entity\Media $medias
+     * @param \Amulen\MediaBundle\Entity\Media $medias
      */
-    public function removeMedia(\Flowcode\MediaBundle\Entity\Media $medias) {
+    public function removeMedia(\Amulen\MediaBundle\Entity\Media $medias)
+    {
         $this->medias->removeElement($medias);
     }
 
     /**
      * Get medias
      *
-     * @return \Doctrine\Common\Collections\Collection 
+     * @return \Doctrine\Common\Collections\Collection
      */
-    public function getMedias() {
+    public function getMedias()
+    {
         return $this->medias;
     }
 
-    public function __toString() {
+    public function __toString()
+    {
         return $this->name;
     }
-
 }
