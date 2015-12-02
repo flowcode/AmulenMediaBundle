@@ -1,0 +1,26 @@
+services:
+
+    amulen.media.form.galleryItem:
+        class: Flowcode\MediaBundle\Form\GalleryItemType
+        tags:
+            - { name: form.type, alias: galleryitem_type }
+
+    amulen.media.form.gallery:
+        class: Flowcode\MediaBundle\Form\GalleryType
+        tags:
+            - { name: form.type, alias: gallery_type }
+
+    amulen.media.form.media:
+        class: Flowcode\MediaBundle\Form\MediaType
+        tags:
+            - { name: form.type, alias: media_type }
+
+    amulen.media.form.mediaType:
+        class: Flowcode\MediaBundle\Form\MediaTypeType
+        tags:
+            - { name: form.type, alias: mediatype_type }
+
+    amulen.media.form.mediaType:
+        class: Flowcode\MediaBundle\Form\MediaTypeType
+        tags:
+            - { name: form.type, alias: mediatype_type }

@@ -4,8 +4,6 @@ namespace Flowcode\MediaBundle\Controller;
 
 use Amulen\MediaBundle\Entity\Gallery;
 use Amulen\MediaBundle\Entity\GalleryItem;
-use Amlulen\MediaBundle\Form\GalleryItemType;
-use Amulen\MediaBundle\Form\GalleryType;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
@@ -100,7 +98,7 @@ class AdminGalleryController extends Controller {
      * @return Form The form
      */
     private function createCreateForm(Gallery $entity) {
-        $form = $this->createForm(new GalleryType(), $entity, array(
+        $form = $this->createForm($this->get("amulen.media.form.gallery"), $entity, array(
             'action' => $this->generateUrl('admin_gallery_create'),
             'method' => 'POST',
         ));
@@ -185,7 +183,7 @@ class AdminGalleryController extends Controller {
      * @return Form The form
      */
     private function createEditForm(Gallery $entity) {
-        $form = $this->createForm(new GalleryType(), $entity, array(
+        $form = $this->createForm($this->get("amulen.media.form.gallery"), $entity, array(
             'action' => $this->generateUrl('admin_gallery_update', array('id' => $entity->getId())),
             'method' => 'PUT',
         ));
@@ -303,7 +301,7 @@ class AdminGalleryController extends Controller {
         $position = $gallery->getGalleryItems()->count() + 1;
         $entity->setPosition($position);
 
-        $form = $this->createForm(new GalleryItemType(), $entity, array(
+        $form = $this->createForm($this->get("amulen.media.form.galleryItem"), $entity, array(
             'action' => $this->generateUrl('admin_gallery_item_create'),
             'method' => 'POST',
         ));
@@ -325,7 +323,7 @@ class AdminGalleryController extends Controller {
     public function createMediaAction(Request $request) {
         $entity = new \Amulen\MediaBundle\Entity\GalleryItem();
 
-        $form = $this->createForm(new GalleryItemType(), $entity, array(
+        $form = $this->createForm($this->get("amulen.media.form.galleryItem"), $entity, array(
             'action' => $this->generateUrl('admin_gallery_item_create'),
             'method' => 'POST',
         ));
@@ -363,7 +361,7 @@ class AdminGalleryController extends Controller {
             throw $this->createNotFoundException('Unable to find GalleryItem entity.');
         }
 
-        $editForm = $this->createForm(new GalleryItemType(), $entity, array(
+        $editForm = $this->createForm($this->get("amulen.media.form.galleryItem"), $entity, array(
             'action' => $this->generateUrl('admin_gallery_item_update', array("id" => $entity->getId())),
             'method' => 'PUT',
         ));
@@ -393,7 +391,7 @@ class AdminGalleryController extends Controller {
             throw $this->createNotFoundException('Unable to find GalleryItem entity.');
         }
 
-        $editForm = $this->createForm(new GalleryItemType(), $entity, array(
+        $editForm = $this->createForm($this->get("amulen.media.form.galleryItem"), $entity, array(
             'action' => $this->generateUrl('admin_gallery_item_update', array("id" => $entity->getId())),
             'method' => 'PUT',
         ));

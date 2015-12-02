@@ -24,7 +24,7 @@
                     </tr>
                     <tr>
                         <th>Enabled</th>
-                        <td>{{ entity.enabled }}</td>
+                        <td>{% if entity.enabled %}{{"yes"|trans}}{% else %}{{"no"|trans}}{% endif %}</td>
                     </tr>
                 </tbody>
             </table>

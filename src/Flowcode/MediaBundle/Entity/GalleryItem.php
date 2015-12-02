@@ -6,7 +6,7 @@ use Doctrine\ORM\Mapping as ORM;
 use Doctrine\ORM\Mapping\JoinColumn;
 use Doctrine\ORM\Mapping\ManyToOne;
 use Doctrine\ORM\Mapping\OneToOne;
-use Amulen\MediaBundle\Entity\Media;
+
 
 /**
  * GalleryItem
@@ -30,7 +30,7 @@ class GalleryItem {
     protected $position;
 
     /**
-     * @OneToOne(targetEntity="Media", cascade={"persist"})
+     * @OneToOne(targetEntity="\Amulen\MediaBundle\Entity\Media", cascade={"persist"})
      * @JoinColumn(name="media_id", referencedColumnName="id")
      * */
     protected $media;
