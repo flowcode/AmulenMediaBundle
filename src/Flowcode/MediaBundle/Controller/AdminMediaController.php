@@ -63,16 +63,15 @@ class AdminMediaController extends Controller {
     /**
      * Creates a new Media entity.
      *
-     * @Route("/", name="admin_media_create")
+     * @Route("/{type}", name="admin_media_create")
      * @Method("POST")
      * @Template("AmulenMediaBundle:Media:new.html.twig")
      */
-    public function createAction(Request $request) {
+    public function createAction(Request $request, $type) {
         $entity = new Media();
+        $entity->setMediaType($type);
         $form = $this->createCreateForm($entity);
         $form->handleRequest($request);
-
-
 
         if ($form->isValid()) {
             $em = $this->getDoctrine()->getManager();
@@ -96,8 +95,12 @@ class AdminMediaController extends Controller {
      * @return \Symfony\Component\Form\Form The form
      */
     private function createCreateForm(Media $entity) {
-        $form = $this->createForm(new MediaType(), $entity, array(
-            'action' => $this->generateUrl('admin_media_create'),
+
+        $types = $this->container->getParameter('flowcode_media.media_types');
+        $class = $types[$entity->getMediaType()]["class_type"];
+
+        $form = $this->createForm(new $class(), $entity, array(
+            'action' => $this->generateUrl('admin_media_create', array("type" => $entity->getMediaType())),
             'method' => 'POST',
         ));
 
@@ -109,18 +112,26 @@ class AdminMediaController extends Controller {
     /**
      * Displays a form to create a new Media entity.
      *
-     * @Route("/new", name="admin_media_new")
+     * @Route("/select-media-type", name="admin_media_select_media")
      * @Method("GET")
      * @Template()
      */
-    public function newAction() {
-        $entity = new Media();
-        $form = $this->createCreateForm($entity);
+    public function selectMediaTypeAction() {
 
-//        $form = $this->createFormBuilder($entity)
-//                ->add('name')
-//                ->add('file')
-//                ->getForm();
+        return array();
+    }
+
+    /**
+     * Displays a form to create a new Media entity.
+     *
+     * @Route("/new/{type}", name="admin_media_new")
+     * @Method("GET")
+     * @Template()
+     */
+    public function newAction($type) {
+        $entity = new Media();
+        $entity->setMediaType($type);
+        $form = $this->createCreateForm($entity);
 
         return array(
             'entity' => $entity,

@@ -5,6 +5,7 @@ namespace Flowcode\MediaBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\ORM\Mapping\JoinColumn;
 use Doctrine\ORM\Mapping\ManyToOne;
+use Gedmo\Mapping\Annotation as Gedmo;
 
 /**
  * Media
@@ -35,10 +36,27 @@ class Media {
     protected $path;
 
     /**
-     * @ManyToOne(targetEntity="\Amulen\MediaBundle\Entity\MediaType", inversedBy="medias")
-     * @JoinColumn(name="media_type_id", referencedColumnName="id")
-     * */
+     * @var string
+     *
+     * @ORM\Column(name="media_type", type="string", length=255)
+     */
     protected $mediaType;
+
+    /**
+     * @var datetime $created
+     *
+     * @Gedmo\Timestampable(on="create")
+     * @ORM\Column(type="datetime")
+     */
+    protected $created;
+
+    /**
+     * @var datetime $updated
+     *
+     * @Gedmo\Timestampable(on="update")
+     * @ORM\Column(type="datetime")
+     */
+    protected $updated;
 
     /**
      * Get id
@@ -115,10 +133,10 @@ class Media {
     /**
      * Set mediaType
      *
-     * @param \Amulen\MediaBundle\Entity\MediaType $mediaType
+     * @param string $path
      * @return \Amulen\MediaBundle\Entity\Media
      */
-    public function setMediaType(\Amulen\MediaBundle\Entity\MediaType $mediaType = null) {
+    public function setMediaType($mediaType) {
         $this->mediaType = $mediaType;
 
         return $this;
@@ -127,7 +145,7 @@ class Media {
     /**
      * Get mediaType
      *
-     * @return \Amulen\MediaBundle\Entity\MediaType
+     * @return string
      */
     public function getMediaType() {
         return $this->mediaType;
@@ -151,6 +169,52 @@ class Media {
 
     public function __toString() {
         return $this->name;
+    }
+
+    /**
+     * Set created
+     *
+     * @param \DateTime $created
+     * @return \Amulen\MediaBundle\Entity\Media
+     */
+    public function setCreated($created)
+    {
+        $this->created = $created;
+
+        return $this;
+    }
+
+    /**
+     * Get created
+     *
+     * @return \DateTime
+     */
+    public function getCreated()
+    {
+        return $this->created;
+    }
+
+    /**
+     * Set updated
+     *
+     * @param \DateTime $updated
+     * @return \Amulen\MediaBundle\Entity\Media
+     */
+    public function setUpdated($updated)
+    {
+        $this->updated = $updated;
+
+        return $this;
+    }
+
+    /**
+     * Get updated
+     *
+     * @return \DateTime
+     */
+    public function getUpdated()
+    {
+        return $this->updated;
     }
 
 }

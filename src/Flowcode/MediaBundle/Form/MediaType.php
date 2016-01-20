@@ -17,9 +17,12 @@ class MediaType extends AbstractType
         $builder
             ->add('name')
             ->add('path')
+            ->add('mediaType', 'hidden', array(
+                'data' => 'type_image_file',
+            ))
         ;
     }
-    
+
     /**
      * @param OptionsResolverInterface $resolver
      */

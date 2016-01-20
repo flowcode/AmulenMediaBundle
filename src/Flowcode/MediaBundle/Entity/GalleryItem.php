@@ -30,6 +30,21 @@ class GalleryItem {
     protected $position;
 
     /**
+     *@var \Amulen\PageBundle\Entity\Page
+     *
+     * @ManyToOne(targetEntity="\Amulen\PageBundle\Entity\Page")
+     * @JoinColumn(name="page_id", referencedColumnName="id")
+     */
+    protected $page;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="link", type="string", length=255, nullable=true)
+     */
+    protected $link;
+
+    /**
      * @OneToOne(targetEntity="\Amulen\MediaBundle\Entity\Media", cascade={"persist"})
      * @JoinColumn(name="media_id", referencedColumnName="id")
      * */
@@ -69,6 +84,27 @@ class GalleryItem {
      */
     public function getPosition() {
         return $this->position;
+    }
+
+    /**
+     * Set link
+     *
+     * @param string $link
+     * @return \Amulen\MediaBundle\Entity\GalleryItem
+     */
+    public function setLink($link) {
+        $this->link = $link;
+
+        return $this;
+    }
+
+    /**
+     * Get link
+     *
+     * @return string
+     */
+    public function getLink() {
+        return $this->link;
     }
 
 
@@ -117,4 +153,26 @@ class GalleryItem {
     {
         return $this->gallery;
     }
+
+    /**
+     * Set page
+     *
+     * @param \Amulen\PageBundle\Entity\Page $page
+     * @return \Amulen\MediaBundle\Entity\GalleryItem
+     */
+    public function setPage(\Amulen\PageBundle\Entity\Page $page = null) {
+        $this->page = $page;
+
+        return $this;
+    }
+
+    /**
+     * Get page
+     *
+     * @return \Amulen\PageBundle\Entity\Page
+     */
+    public function getPage() {
+        return $this->page;
+    }
+
 }

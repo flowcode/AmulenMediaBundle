@@ -19,17 +19,15 @@ class Configuration implements ConfigurationInterface {
         $treeBuilder = new TreeBuilder();
         $rootNode = $treeBuilder->root('flowcode_media');
         $rootNode
-                ->addDefaultsIfNotSet()
-                ->children()
+            ->children()
                 ->arrayNode('media_types')
-                    ->useAttributeAsKey('name')
                     ->prototype('array')
                         ->children()
-                        ->arrayNode('file_extensions')
-                            ->requiresAtLeastOneElement()
-                            ->prototype('scalar')->end()
+                            ->scalarNode('class_type')->end()
+                        ->end()
                     ->end()
                 ->end()
+            ->end()
         ;
 
 

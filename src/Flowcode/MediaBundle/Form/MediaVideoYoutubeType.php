@@ -6,7 +6,7 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
-class GalleryItemType extends AbstractType
+class MediaVideoYoutubeType extends AbstractType
 {
         /**
      * @param FormBuilderInterface $builder
@@ -15,11 +15,13 @@ class GalleryItemType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('position', 'hidden')
-            ->add('page')
-            ->add('link')
-            ->add('media', new MediaType())
-            ->add('gallery')
+            ->add('name')
+            ->add('path', null, array(
+                "label" => "link"
+            ))
+            ->add('mediaType', 'hidden', array(
+                'data' => 'type_video_youtube',
+            ))
         ;
     }
 
@@ -29,7 +31,7 @@ class GalleryItemType extends AbstractType
     public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'Amulen\MediaBundle\Entity\GalleryItem'
+            'data_class' => 'Amulen\MediaBundle\Entity\Media'
         ));
     }
 
@@ -38,6 +40,6 @@ class GalleryItemType extends AbstractType
      */
     public function getName()
     {
-        return 'flowcode_mediabundle_galleryitem';
+        return 'flowcode_mediabundle_media';
     }
 }

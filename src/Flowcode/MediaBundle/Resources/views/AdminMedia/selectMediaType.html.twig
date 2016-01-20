@@ -1,0 +1,55 @@
+{% extends 'FlowcodeDashboardBundle:Default:layout.html.twig' %}
+
+{% block body %}
+{{ include('FlowcodeMediaBundle:AdminMedia:mediaHeader.html.twig') }}
+<section class="content">
+    <div class="box box-solid">
+        <div class="box-header">
+            <h3>{{ "which media"|trans|title }}</h3>
+            <div class="box-tools">
+            </div>
+        </div>
+        <div class="box-body">
+            <div class="row">
+            <div class="col-sm-4">
+                <h4>Video</h4>
+                <ul class="list-inline">
+                    <li>
+                        <a href="{{ path("admin_media_new",{"type":"type_video_youtube"}) }}" class="btn btn-app">
+                            <i class="fa fa-youtube"></i> Youtube video
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="btn btn-app">
+                            <i class="fa fa-vimeo"></i> Vimeo video
+                        </a>
+                    </li>
+                </ul>
+
+            </div>
+            <div class="col-sm-4">
+                <h4>Audio</h4>
+                <ul class="list-inline">
+                    <li>
+                        <a href="{{ path("admin_media_new",{"type":"type_image_file"}) }}" class="btn btn-app">
+                            <i class="fa fa-soundcloud"></i> Soundcloud audio
+                        </a>
+                    </li>
+                </ul>
+
+            </div>
+            <div class="col-sm-4">
+                <h4>Image</h4>
+                <ul class="list-inline">
+                    <li>
+                        <a href="{{ path("admin_media_browser") }}" class="btn btn-app">
+                            <i class="fa fa-file"></i> File
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

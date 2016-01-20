@@ -1,0 +1,15 @@
+{% extends '::frontend.html.twig' %}
+
+{% block body -%}
+<div class="row">
+    {% for video in videos %}
+    <div class="col-md-4">
+        <h3>{{video.name|title}}</h3>
+        <div>
+            <iframe width="350" height="197" src="https://www.youtube.com/embed/{{video.code}}" frameborder="0" allowfullscreen></iframe>
+        </div>
+    </div>
+    {% endfor %}
+
+</div>
+{% endblock %}
