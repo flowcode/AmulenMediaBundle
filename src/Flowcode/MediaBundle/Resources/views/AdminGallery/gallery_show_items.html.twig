@@ -1,0 +1,16 @@
+{% for item in items %}
+<div class="col-lg-3">
+    <div class="thumbnail">
+        <img src="{{ asset(item.media.path) }}" >
+        <div class="caption">
+
+            {{item.media.name}}
+            <div>
+                <a href="{{ path(edit_route, { 'id' : item.id, 'product': product.id }) }}">
+                    {{ 'edit'|trans }}
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endfor %}

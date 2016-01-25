@@ -1,0 +1,23 @@
+<div class="box-body">
+    {{ form_start(form) }}
+
+    {{ form_row(form.position) }}
+    {{ form_row(form.gallery) }}
+    {{ form_row(form.media.name) }}
+
+    <div class="form-group">
+        {{ form_label(form.media.path) }}
+        <div class="col-lg-5">
+            {{ form_widget(form.media.path) }}
+            {{ form_errors(form.media.path) }}
+        </div>
+        <div class="col-lg-4">
+            <button class="btn btn-default" type="button" id="browser-trigger">
+                <i class="fa fa-search" ></i>
+                Imagen
+            </button>
+        </div>
+    </div>
+
+    {{ form_end(form) }}
+</div>

@@ -15,33 +15,11 @@
             <h3 class="box-title">{{"edit item"|trans|title}}</h3>
             <div class="box-tools">
                 <a href="{{ path('admin_gallery_show', { 'id': entity.gallery.id }) }}" class="btn btn-xs btn-link">
-                    Back to Gallery
+                    {{"back to gallery"|trans|title}}
                 </a>
             </div>
         </div>
-        <div class="box-body">
-            {{ form_start(form) }}
-
-            {{ form_row(form.position) }}
-            {{ form_row(form.gallery) }}
-            {{ form_row(form.media.name) }}
-
-            <div class="form-group">
-                {{ form_label(form.media.path) }}
-                <div class="col-lg-5">
-                    {{ form_widget(form.media.path) }}
-                    {{ form_errors(form.media.path) }}
-                </div>
-                <div class="col-lg-4">
-                    <button class="btn btn-default" type="button" id="browser-trigger">
-                        <i class="fa fa-search" ></i>
-                        Imagen
-                    </button>
-                </div>
-            </div>
-
-            {{ form_end(form) }}
-        </div>
+        {{ include("FlowcodeMediaBundle:AdminGallery:gallery_edit_form_item.html.twig", {'edit_form': edit_form}) }}
     </div>
 </section>
 {% endblock %}

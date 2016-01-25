@@ -41,22 +41,7 @@
         </div>
         <div class="box-body">
             <div class="row">
-                {% for item in entity.galleryItems %}
-                <div class="col-lg-3">
-                    <div class="thumbnail">
-                        <img src="{{ asset(item.media.path) }}" >
-                        <div class="caption">
-
-                            {{item.media.name}}
-                            <div>
-                                <a href="{{ path('admin_gallery_item_edit', { 'id' : item.id }) }}">
-                                    {{ 'edit'|trans }}
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                {% endfor %}
+                {{ include("FlowcodeMediaBundle:AdminGallery:gallery_show_items.html.twig", {'items': entity.galleryItems, 'edit_route': 'admin_gallery_item_edit'}) }}
             </div>
         </div>
     </div>
