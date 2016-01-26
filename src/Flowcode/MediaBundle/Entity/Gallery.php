@@ -58,6 +58,7 @@ class Gallery {
 
     /**
      * @OneToMany(targetEntity="\Amulen\MediaBundle\Entity\GalleryItem", mappedBy="gallery", cascade={"persist"})
+     * @ORM\OrderBy({"position" = "ASC"})
      * */
     protected $galleryItems;
 
