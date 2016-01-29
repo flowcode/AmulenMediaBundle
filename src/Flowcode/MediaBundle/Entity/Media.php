@@ -43,6 +43,20 @@ class Media {
     protected $mediaType;
 
     /**
+     * @var string
+     *
+     * @ORM\Column(name="language", type="string", length=255, nullable=true)
+     */
+    protected $language;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="size", type="integer", nullable=true)
+     */
+    protected $size;
+
+    /**
      * @var datetime $created
      *
      * @Gedmo\Timestampable(on="create")
@@ -133,7 +147,7 @@ class Media {
     /**
      * Set mediaType
      *
-     * @param string $path
+     * @param string $mediaType
      * @return \Amulen\MediaBundle\Entity\Media
      */
     public function setMediaType($mediaType) {
@@ -149,6 +163,48 @@ class Media {
      */
     public function getMediaType() {
         return $this->mediaType;
+    }
+
+    /**
+     * Set language
+     *
+     * @param string $language
+     * @return \Amulen\MediaBundle\Entity\Media
+     */
+    public function setLanguage($language) {
+        $this->language = $language;
+
+        return $this;
+    }
+
+    /**
+     * Get language
+     *
+     * @return string
+     */
+    public function getLanguage() {
+        return $this->language;
+    }
+
+    /**
+     * Set size
+     *
+     * @param integer $size
+     * @return \Amulen\MediaBundle\Entity\Media
+     */
+    public function setSize($size) {
+        $this->size = $size;
+
+        return $this;
+    }
+
+    /**
+     * Get size
+     *
+     * @return integer
+     */
+    public function getSize() {
+        return $this->size;
     }
 
     public function getAbsolutePath() {
