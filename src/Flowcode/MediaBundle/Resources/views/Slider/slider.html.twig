@@ -16,7 +16,7 @@
                 {% set link = path('page', { 'slug': entity.page.slug }) %}
             {% endif %}
             <a href="{{ link }}">
-                <img src="{{ asset(entity.getMedia.getWebPath) | imagine_filter('main_slider') }}" alt="{{ entity.getMedia.name }}">
+                <img src="{{ asset(entity.getMedia.getWebPath | imagine_filter('main_slider')) }}" alt="{{ entity.getMedia.name }}">
             </a>
         </div>
         {% endfor %}

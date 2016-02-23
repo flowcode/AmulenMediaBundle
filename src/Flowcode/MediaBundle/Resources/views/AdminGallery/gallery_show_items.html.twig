@@ -4,7 +4,7 @@
         {% for item in items %}
             <li value="{{item.id}}">
                 <div class="thumb-body">            
-                    <img src="{{ asset(item.media.path)|imagine_filter('thumb_product_gallery') }}">
+                    <img src="{{ asset(item.media.path|imagine_filter('thumb_product_gallery')) }}">
                 
                     <div class="caption">
 
