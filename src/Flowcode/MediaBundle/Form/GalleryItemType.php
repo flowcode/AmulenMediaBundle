@@ -18,6 +18,7 @@ class GalleryItemType extends AbstractType
             ->add('position', 'hidden')
             ->add('page')
             ->add('link')
+            ->add('description')
             ->add('media', new MediaType())
             ->add('gallery')
         ;

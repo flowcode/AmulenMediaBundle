@@ -45,6 +45,13 @@ class GalleryItem {
     protected $link;
 
     /**
+     * @var string
+     *
+     * @ORM\Column(name="description", type="string", length=255, nullable=true)
+     */
+    protected $description;
+
+    /**
      * @OneToOne(targetEntity="\Amulen\MediaBundle\Entity\Media", cascade={"persist"})
      * @JoinColumn(name="media_id", referencedColumnName="id")
      * */
@@ -107,6 +114,26 @@ class GalleryItem {
         return $this->link;
     }
 
+    /**
+     * Set description
+     *
+     * @param string $description
+     * @return \Amulen\MediaBundle\Entity\GalleryItem
+     */
+    public function setDescription($description) {
+        $this->description = $description;
+
+        return $this;
+    }
+
+    /**
+     * Get description
+     *
+     * @return string
+     */
+    public function getDescription() {
+        return $this->description;
+    }
 
     /**
      * Set media

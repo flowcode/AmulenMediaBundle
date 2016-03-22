@@ -41,7 +41,7 @@
         </div>
         <div class="box-body">
             <div class="row">
-                {{ include("FlowcodeMediaBundle:AdminGallery:gallery_show_items.html.twig", {'items': entity.galleryItems, 'edit_route': 'admin_gallery_item_edit', 'product': entity, 'delete_route': 'admin_gallery_item_remove'}) }}
+                {{ include("FlowcodeMediaBundle:AdminGallery:gallery_show_items.html.twig", {'items': entity.galleryItems, 'edit_route': 'admin_gallery_item_edit', 'product': entity, 'delete_route': 'admin_gallery_item_remove', 'type': 'type_image_file'}) }}
             </div>
         </div>
     </div>
