@@ -24,3 +24,15 @@ services:
         class: Flowcode\MediaBundle\Form\MediaTypeType
         tags:
             - { name: form.type, alias: mediatype_type }
+
+    amulen.media.showmenu_eventsubscriber:
+        class: Flowcode\MediaBundle\Event\ShowMenuSubscriber
+        arguments: ['@router', '@translator']
+        tags:
+            - { name: kernel.event_subscriber }
+
+    amulen.media.listplugins_eventsubscriber:
+        class: Flowcode\MediaBundle\Event\ListPluginsSubscriber
+        arguments: ['@router', '@translator']
+        tags:
+            - { name: kernel.event_subscriber }
