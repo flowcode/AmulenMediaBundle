@@ -10,7 +10,7 @@
     <!-- Wrapper for slides -->
     <div class="carousel-inner" role="listbox">
         {% for entity in gallery.galleryItems %}
-            <div style="position: relative;" class="item cactive{% endif %}">
+            <div style="position: relative;" class="item {% if loop.first %}active{% endif %}">
                 {% set link = "#" %}
                 {% if entity.page %}
                     {% set link = path('page', { 'slug': entity.page.slug }) %}
