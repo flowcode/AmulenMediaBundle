@@ -13,9 +13,11 @@
                             <a href="{{ path(edit_route, { 'id' : item.id, 'product': product.id }) }}">
                                 {{ 'edit'|trans }}
                             </a>
-                            <a href="{{ path(delete_route, { 'id' : item.id, 'product': product.id }) }}">
-                                {{ 'delete'|trans }}
-                            </a>
+                            {% if delete_route %}
+                                <a href="{{ path(delete_route, { 'id' : item.id, 'product': product.id }) }}">
+                                    {{ 'delete'|trans }}
+                                </a>
+                            {% endif %}
                         </div>
                     </div>
                 </div>
