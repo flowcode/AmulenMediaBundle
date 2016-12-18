@@ -1,19 +1,18 @@
-
 <div class="slider-container">
-    <ul id="sortable-images" class="slider" >
+    <ul id="sortable-images" class="slider amulen-image-slider">
         {% for item in items %}
-            <li value="{{item.id}}">
-                <div class="thumb-body">            
-                    <img src="{{ asset(item.media.path|imagine_filter('thumb_product_gallery')) }}">
-                
+            <li value="{{ item.id }}">
+                <div class="thumb-body">
+                    <img src="{{ asset(item.media.path|imagine_filter('thumb_product_gallery')) }}" class="img-responsive amulen-image-slider-img">
+
                     <div class="caption">
 
-                        {{item.media.name}}
+                        {{ item.media.name }}
                         <div>
                             <a href="{{ path(edit_route, { 'id' : item.id, 'product': product.id }) }}">
                                 {{ 'edit'|trans }}
                             </a>
-                            {% if delete_route %}
+                            {% if delete_route is defined %}
                                 <a href="{{ path(delete_route, { 'id' : item.id, 'product': product.id }) }}">
                                     {{ 'delete'|trans }}
                                 </a>
