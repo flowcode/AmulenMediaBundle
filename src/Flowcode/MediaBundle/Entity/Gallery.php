@@ -75,6 +75,7 @@ class Gallery {
         $this->galleryItems = new ArrayCollection();
         $this->tags = new ArrayCollection();
         $this->type = self::TYPE_SLIDER;
+        $this->enabled = true;
     }
 
     /**

@@ -72,6 +72,12 @@ class GalleryItem {
         return $this->id;
     }
 
+    public function __construct()
+    {
+        $this->position = 0;
+    }
+
+
     /**
      * Set position
      *
