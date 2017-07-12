@@ -23,6 +23,7 @@ class Configuration implements ConfigurationInterface {
                 ->arrayNode('media_types')
                     ->prototype('array')
                         ->children()
+                            ->scalarNode('label')->end()
                             ->scalarNode('class_type')->end()
                         ->end()
                     ->end()

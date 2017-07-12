@@ -36,3 +36,12 @@ services:
         arguments: ['@router', '@translator']
         tags:
             - { name: kernel.event_subscriber }
+
+    amulen.media.twig.functions:
+        class: Flowcode\MediaBundle\Twig\AppExtension
+        arguments: ['@amulen.media.service.youtube']
+        tags:
+            - { name: twig.extension }
+
+    amulen.media.service.youtube:
+        class: Flowcode\MediaBundle\Services\YoutubeService
