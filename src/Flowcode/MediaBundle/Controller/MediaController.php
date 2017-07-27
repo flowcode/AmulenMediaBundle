@@ -11,7 +11,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
  */
 class MediaController extends Controller {
 
-    public function youtubeListAction() {
+    public function youtubeListAction($template = 'FlowcodeMediaBundle:Media:youtube_videos.html.twig') {
         $em = $this->getDoctrine()->getManager();
         $entities = $em->getRepository('AmulenMediaBundle:Media')->findBy(array("mediaType" => "type_video_youtube"));
 
@@ -30,7 +30,7 @@ class MediaController extends Controller {
             );
         }
         return $this->render(
-                        'FlowcodeMediaBundle:Media:youtube_videos.html.twig', array('videos' => $videos)
+            $template, array('videos' => $videos)
         );
     }
 

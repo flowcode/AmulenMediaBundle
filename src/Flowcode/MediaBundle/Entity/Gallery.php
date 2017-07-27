@@ -45,6 +45,13 @@ class Gallery {
     /**
      * @var string
      *
+     * @ORM\Column(name="description", type="string", length=255, nullable=true)
+     */
+    protected $description;
+
+    /**
+     * @var string
+     *
      * @ORM\Column(name="type", type="string", length=255)
      */
     protected $type;
@@ -118,6 +125,22 @@ class Gallery {
         $this->slug = $slug;
 
         return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getDescription()
+    {
+        return $this->description;
+    }
+
+    /**
+     * @param string $description
+     */
+    public function setDescription($description)
+    {
+        $this->description = $description;
     }
 
     /**

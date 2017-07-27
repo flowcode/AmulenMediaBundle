@@ -15,13 +15,15 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
  *
  * @author Juan Manuel Agüero <jaguero@flowcode.com.ar>
  */
-class SliderController extends Controller {
+class SliderController extends Controller
+{
 
-    public function mainSliderAction($max = 3) {
+    public function mainSliderAction($max = 3, $template = 'FlowcodeMediaBundle:Slider:slider.html.twig')
+    {
         $em = $this->getDoctrine()->getManager();
         $entity = $em->getRepository('AmulenMediaBundle:Gallery')->findOneBy(array("slug" => "slider-main"));
         return $this->render(
-                        'FlowcodeMediaBundle:Slider:slider.html.twig', array('gallery' => $entity)
+            $template, array('gallery' => $entity)
         );
     }
 
